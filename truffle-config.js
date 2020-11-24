@@ -1,39 +1,58 @@
+const { projectId, mnemonic } = require('./secrets.json');
+const Web3 = require('web3');
 var HDWalletProvider = require("truffle-hdwallet-provider");
-var mnemonic = "insert menmonics here";
+const web3 = new Web3();
 
 module.exports = {
+
   networks: {
-    //development: {
-    //  host: "127.0.0.1",
-    //  port: 7545,
-    //  network_id: "*"
-    //},
     development: {
+      host: "127.0.0.1",
+      port: 7545,
+      network_id: "*"
+    },
+    ropsten: {
       provider: function() {
-        return new HDWalletProvider(mnemonic, "YOUR INFURA TOKEN")
+        return new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/${projectId}`)
       },
       network_id: 3,
-      gas: 4000000      //make sure this gas allocation isn't over 4M, which is the max
-      
-
+      gas: 7000000
     },
-    rinkeby: {
+    kovan: {
       provider: function() {
-        return new HDWalletProvider(mnemonic, "YOUR INFURA TOKEN");
+        return new HDWalletProvider(mnemonic, `https://kovan.infura.io/v3/${projectId}`)
       },
-      network_id: 4,
-      gasPrice: 20000000000,
-      gas: 3716887
+      network_id: 42,
+      gas: 7000000
     },
-    mainnet: {
+    live: {
       provider: function() {
-        return new HDWalletProvider(mnemonic, "YOUR INFURA TOKEN")
+        return new HDWalletProvider(mnemonic, `https://mainnet.infura.io/v3/${projectId}`)
       },
       network_id: 1,
-      gasPrice: 2000000000,
-      gas: 4000000      //make sure this gas allocation isn't over 4M, which is the max
-      
+      gas: 3000000,
+      gasPrice: web3.utils.toWei('84', 'gwei'),
 
     }
+    //  test: {
+    //    host: "127.0.0.1",
+    //    port: 7545,
+    //    network_id: "*"
+    //  }
+  },
+  //
+  compilers: {
+    solc: {
+      version: "0.6.2",
+      settings: {          // See the solidity docs for advice about optimization and evmVersion
+        optimizer: {
+          enabled: true,
+          runs: 200
+        },
+      }
+    }
+
   }
 };
+
+
