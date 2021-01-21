@@ -16,14 +16,16 @@ module.exports = {
         return new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/${projectId}`)
       },
       network_id: 3,
-      gas: 7000000
+      gas: 7000000,
+      skipDryRun: true,
     },
     kovan: {
       provider: function() {
         return new HDWalletProvider(mnemonic, `https://kovan.infura.io/v3/${projectId}`)
       },
       network_id: 42,
-      gas: 7000000
+      gas: 7000000,
+      skipDryRun: true,
     },
     live: {
       provider: function() {
@@ -43,7 +45,7 @@ module.exports = {
   //
   compilers: {
     solc: {
-      version: "0.6.2",
+      version: "0.7.6",
       settings: {          // See the solidity docs for advice about optimization and evmVersion
         optimizer: {
           enabled: true,
