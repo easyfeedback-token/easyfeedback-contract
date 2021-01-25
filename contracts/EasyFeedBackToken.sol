@@ -12,7 +12,7 @@ contract EasyFeedBackToken is ERC20Capped, Ownable {
     ERC20Capped(179141000000 * 1 ether)
     public {
         // Mint 1% of total supply
-        mint(msg.sender, (179141000000 * 1 ether) * (1/100));
+        mint(msg.sender, (1791410000 * 1 ether));
     }
 
     event Burned(address indexed burner, uint256 burnAmount);
