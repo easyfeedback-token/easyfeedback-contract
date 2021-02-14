@@ -8,9 +8,9 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract EasyFeedBackToken is ERC20Capped, Ownable {
     constructor ()
-    ERC20("EasyFeedBack", "EASYF")
+    ERC20("EasyFeedback", "EASYF")
     ERC20Capped(179141000000 * 1 ether)
-    public {
+    {
         // Mint 1% of total supply
         mint(msg.sender, (1791410000 * 1 ether));
     }
